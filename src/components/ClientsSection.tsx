@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 
 const clients = [
-  "Grupo Empresarial del Caribe",
-  "AutoRent RD",
-  "Transporte Luna",
-  "Financiera del Este",
-  "FlotaMax",
-  "RentaCar Premium",
+  { name: "Grupo Empresarial del Caribe", url: "https://ejemplo.com" },
+  { name: "AutoRent RD", url: "https://ejemplo.com" },
+  { name: "Transporte Luna", url: "https://ejemplo.com" },
+  { name: "Financiera del Este", url: "https://ejemplo.com" },
+  { name: "FlotaMax", url: "https://ejemplo.com" },
+  { name: "RentaCar Premium", url: "https://ejemplo.com" },
 ];
 
 const ClientsSection = () => (
