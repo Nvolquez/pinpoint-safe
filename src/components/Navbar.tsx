@@ -19,10 +19,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="container mx-auto flex items-center justify-between py-4 px-4">
         <a href="#inicio" className="flex items-center gap-2">
-          <MapPin className="text-primary" size={28} />
-          <span className="font-display text-xl font-bold text-foreground">
-            Setra <span className="text-primary">GPS</span>
-          </span>
+          <img src={logo} alt="Setra GPS" className="h-8 w-auto" />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
