@@ -9,7 +9,6 @@ const services = [
   { icon: Landmark, title: "Financieras", desc: "Monitorea vehículos financiados y protege tu cartera de activos.", slug: "financieras" },
 ];
 
-const WHATSAPP_URL = "https://wa.me/18091234567?text=Hola%2C%20quiero%20solicitar%20el%20servicio%20de%20GPS";
 
 const ServicesSection = () => (
   <section id="servicios" className="py-24 relative">
