@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { MapPin, Mail, MessageCircle, Facebook, Instagram } from "lucide-react";
 
 const Footer = () => (
