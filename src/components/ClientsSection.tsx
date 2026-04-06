@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Building2 } from "lucide-react";
 
 const clients = [
   { name: "Grupo Empresarial del Caribe", url: "https://ejemplo.com" },
@@ -37,9 +38,12 @@ const ClientsSection = () => (
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.08 }}
-            className="glass rounded-xl p-6 flex items-center justify-center min-h-[100px] hover:border-primary/50 transition-colors"
+            className="glass rounded-xl p-6 flex flex-col items-center justify-center gap-3 min-h-[130px] hover:border-primary/50 transition-colors"
           >
-            <span className="font-display font-semibold text-sm text-center text-foreground/70">
+            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+              <Building2 className="text-primary" size={24} />
+            </div>
+            <span className="font-display font-semibold text-xs text-center text-foreground/70 leading-tight">
               {client.name}
             </span>
           </motion.a>
