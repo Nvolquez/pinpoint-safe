@@ -30,10 +30,10 @@ const Footer = () => (
         <div>
           <h4 className="font-display font-semibold mb-4">Servicios</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li>GPS para vehículos</li>
-            <li>GPS para flotas</li>
-            <li>GPS para Rent Car</li>
-            <li>GPS para financieras</li>
+            <li><Link to="/servicios/vehiculos" className="hover:text-foreground transition-colors">GPS para vehículos</Link></li>
+            <li><Link to="/servicios/flotas" className="hover:text-foreground transition-colors">GPS para flotas</Link></li>
+            <li><Link to="/servicios/rent-car" className="hover:text-foreground transition-colors">GPS para Rent Car</Link></li>
+            <li><Link to="/servicios/financieras" className="hover:text-foreground transition-colors">GPS para financieras</Link></li>
           </ul>
         </div>
 

@@ -44,14 +44,12 @@ const ServicesSection = () => (
             </div>
             <h3 className="font-display font-semibold text-lg mb-2">{s.title}</h3>
             <p className="text-sm text-muted-foreground mb-6 flex-1">{s.desc}</p>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to={`/servicios/${s.slug}`}
               className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
             >
-              Solicitar →
-            </a>
+              Ver más →
+            </Link>
           </motion.div>
         ))}
       </div>
