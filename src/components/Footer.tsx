@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { MapPin, Mail, MessageCircle, Facebook, Instagram } from "lucide-react";
+import { Mail, MessageCircle, Facebook, Instagram } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => (
   <footer className="border-t border-border py-12 bg-card">
@@ -7,10 +8,7 @@ const Footer = () => (
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <MapPin className="text-primary" size={24} />
-            <span className="font-display text-lg font-bold">
-              Setra <span className="text-primary">GPS</span>
-            </span>
+            <img src={logo} alt="Setra GPS" className="h-10 w-auto" />
           </div>
           <p className="text-sm text-muted-foreground">
             Rastreo GPS vehicular en República Dominicana. Protege tu inversión con tecnología avanzada.
