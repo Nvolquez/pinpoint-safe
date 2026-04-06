@@ -1,4 +1,4 @@
-import { MapPin, Mail, MessageCircle } from "lucide-react";
+import { MapPin, Mail, MessageCircle, Facebook, Instagram } from "lucide-react";
 
 const Footer = () => (
   <footer className="border-t border-border py-12 bg-card">
