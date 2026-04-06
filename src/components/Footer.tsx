@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { MapPin, Mail, MessageCircle, Facebook, Instagram } from "lucide-react";
+import { Mail, MessageCircle, Facebook, Instagram } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => (
   <footer className="border-t border-border py-12 bg-card">

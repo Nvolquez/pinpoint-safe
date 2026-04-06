@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Menu, X, MapPin } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/logo.png";
 
 const WHATSAPP_URL = "https://wa.me/18091234567?text=Hola%2C%20quiero%20información%20sobre%20GPS%20vehicular";
 
