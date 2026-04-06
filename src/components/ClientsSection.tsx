@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 
 const clients = [
-  "Grupo Empresarial del Caribe",
-  "AutoRent RD",
-  "Transporte Luna",
-  "Financiera del Este",
-  "FlotaMax",
-  "RentaCar Premium",
+  { name: "Grupo Empresarial del Caribe", url: "https://ejemplo.com" },
+  { name: "AutoRent RD", url: "https://ejemplo.com" },
+  { name: "Transporte Luna", url: "https://ejemplo.com" },
+  { name: "Financiera del Este", url: "https://ejemplo.com" },
+  { name: "FlotaMax", url: "https://ejemplo.com" },
+  { name: "RentaCar Premium", url: "https://ejemplo.com" },
 ];
 
 const ClientsSection = () => (
@@ -27,19 +27,22 @@ const ClientsSection = () => (
       </motion.div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-        {clients.map((name, i) => (
-          <motion.div
-            key={name}
+        {clients.map((client, i) => (
+          <motion.a
+            key={client.name}
+            href={client.url}
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.08 }}
-            className="glass rounded-xl p-6 flex items-center justify-center min-h-[100px]"
+            className="glass rounded-xl p-6 flex items-center justify-center min-h-[100px] hover:border-primary/50 transition-colors"
           >
             <span className="font-display font-semibold text-sm text-center text-foreground/70">
-              {name}
+              {client.name}
             </span>
-          </motion.div>
+          </motion.a>
         ))}
       </div>
     </div>
