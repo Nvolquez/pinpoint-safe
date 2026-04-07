@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { MapPin, MessageCircle } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
-const WHATSAPP_URL = "https://wa.me/18091234567?text=Hola%2C%20quiero%20información%20sobre%20GPS%20vehicular";
+const WHATSAPP_URL = "https://wa.me/18097869806?text=Hola%2C%20quiero%20información%20sobre%20GPS%20vehicular";
 
 const HeroSection = () => (
   <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">

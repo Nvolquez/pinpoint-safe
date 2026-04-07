@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { MessageCircle, Phone } from "lucide-react";
 
-const WHATSAPP_URL = "https://wa.me/18091234567?text=Hola%2C%20quiero%20proteger%20mi%20vehículo%20con%20GPS";
+const WHATSAPP_URL = "https://wa.me/18097869806?text=Hola%2C%20quiero%20proteger%20mi%20vehículo%20con%20GPS";
 
 const CTASection = () => (
   <section id="contacto" className="py-24 relative overflow-hidden">
@@ -34,7 +34,7 @@ const CTASection = () => (
             WhatsApp
           </a>
           <a
-            href="tel:+18091234567"
+            href="tel:+18097869806"
             className="inline-flex items-center justify-center gap-2 border border-border hover:border-primary/50 text-foreground font-semibold px-10 py-4 rounded-lg transition-colors text-lg w-full sm:w-auto"
           >
             <Phone size={22} />
