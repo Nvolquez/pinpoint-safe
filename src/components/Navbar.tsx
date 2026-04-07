@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/logo.png";
 
 const WHATSAPP_URL = "https://wa.me/18097869806?text=Hola%2C%20quiero%20información%20sobre%20GPS%20vehicular";
-const DEMO_URL = "#demo";
+const DEMO_URL = "https://demo.example.com";
 const CLIENT_ACCESS_URL = "#";
 
 const navLinks = [
