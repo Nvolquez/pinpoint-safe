@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Play, UserCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/logo.png";
 
-const WHATSAPP_URL = "https://wa.me/18091234567?text=Hola%2C%20quiero%20información%20sobre%20GPS%20vehicular";
+const WHATSAPP_URL = "https://wa.me/18097869806?text=Hola%2C%20quiero%20información%20sobre%20GPS%20vehicular";
+const DEMO_URL = "#demo";
+const CLIENT_ACCESS_URL = "#";
 
 const navLinks = [
   { label: "Inicio", href: "#inicio" },
@@ -22,7 +24,7 @@ const Navbar = () => {
           <img src={logo} alt="Setra GPS" className="h-8 w-auto" />
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -32,6 +34,22 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          <a
+            href={DEMO_URL}
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+          >
+            <Play size={16} />
+            Demo
+          </a>
+          <a
+            href={CLIENT_ACCESS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 border border-primary/50 hover:bg-primary/10 text-primary text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
+          >
+            <UserCircle size={16} />
+            Acceso Clientes
+          </a>
           <a
             href={WHATSAPP_URL}
             target="_blank"
@@ -66,6 +84,24 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
+              <a
+                href={DEMO_URL}
+                onClick={() => setOpen(false)}
+                className="inline-flex items-center gap-2 text-primary font-semibold"
+              >
+                <Play size={16} />
+                Demo
+              </a>
+              <a
+                href={CLIENT_ACCESS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="inline-flex items-center justify-center gap-2 border border-primary/50 hover:bg-primary/10 text-primary font-semibold px-5 py-2.5 rounded-lg transition-colors"
+              >
+                <UserCircle size={16} />
+                Acceso Clientes
+              </a>
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
