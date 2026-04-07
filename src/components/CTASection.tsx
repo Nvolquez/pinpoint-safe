@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { MessageCircle, Phone } from "lucide-react";
 
-const WHATSAPP_URL = "https://wa.me/18091234567?text=Hola%2C%20quiero%20proteger%20mi%20vehículo%20con%20GPS";
+const WHATSAPP_URL = "https://wa.me/18097869806?text=Hola%2C%20quiero%20proteger%20mi%20vehículo%20con%20GPS";
 
 const CTASection = () => (
   <section id="contacto" className="py-24 relative overflow-hidden">
