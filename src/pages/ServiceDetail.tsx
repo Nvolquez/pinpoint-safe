@@ -1,20 +1,24 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Car, Building2, KeyRound, Landmark, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { Car, Building2, KeyRound, Landmark, ArrowLeft, CheckCircle2, DollarSign, ClipboardList } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 const WHATSAPP_URL = "https://wa.me/18097869806?text=Hola%2C%20quiero%20solicitar%20el%20servicio%20de%20GPS";
 
-const servicesData: Record<string, {
+interface ServiceData {
   icon: typeof Car;
   title: string;
   subtitle: string;
   description: string;
   features: string[];
   benefits: string[];
-}> = {
+  pricing: { plan: string; price: string; period: string; includes: string[] }[];
+  requirements: string[];
+}
+
+const servicesData: Record<string, ServiceData> = {
   vehiculos: {
     icon: Car,
     title: "GPS para Vehículos Personales",
@@ -35,13 +39,33 @@ const servicesData: Record<string, {
       "Instalación discreta y profesional",
       "Soporte técnico 24/7",
     ],
+    pricing: [
+      {
+        plan: "Básico",
+        price: "RD$1,500",
+        period: "/mes",
+        includes: ["Rastreo en tiempo real", "Alertas básicas", "App móvil", "Soporte por WhatsApp"],
+      },
+      {
+        plan: "Premium",
+        price: "RD$2,500",
+        period: "/mes",
+        includes: ["Todo lo del plan Básico", "Corte de motor remoto", "Geocercas ilimitadas", "Historial 90 días", "Soporte prioritario 24/7"],
+      },
+    ],
+    requirements: [
+      "Cédula o pasaporte del propietario",
+      "Matrícula del vehículo vigente",
+      "Acceso físico al vehículo para instalación",
+      "Contrato mínimo de 6 meses",
+    ],
   },
   flotas: {
     icon: Building2,
     title: "GPS para Flotas Empresariales",
     subtitle: "Optimiza operaciones y reduce costos con gestión inteligente",
     description:
-      "Gestiona toda tu flota vehicular desde una sola plataforma. Nuestro sistema de rastreo para flotas te permite optimizar rutas, controlar el consumo de combustible, monitorear el comportamiento de los conductores y reducir costos operativos significativamente. La solución ideal para empresas de transporte, logística y distribución.",
+      "Gestiona toda tu flota vehicular desde una sola plataforma. Nuestro sistema de rastreo para flotas te permite optimizar rutas, controlar el consumo de combustible, monitorear el comportamiento de los conductores y reducir costos operativos significativamente.",
     features: [
       "Panel de control centralizado para toda la flota",
       "Optimización automática de rutas",
@@ -56,13 +80,34 @@ const servicesData: Record<string, {
       "Mejor servicio al cliente con tiempos de entrega precisos",
       "Reportes gerenciales detallados",
     ],
+    pricing: [
+      {
+        plan: "Flota Pequeña",
+        price: "RD$1,200",
+        period: "/vehículo/mes",
+        includes: ["Hasta 10 vehículos", "Panel centralizado", "Reportes básicos", "Soporte por WhatsApp"],
+      },
+      {
+        plan: "Flota Empresarial",
+        price: "RD$900",
+        period: "/vehículo/mes",
+        includes: ["11+ vehículos", "Todo lo del plan pequeño", "Optimización de rutas", "Reportes avanzados", "API de integración", "Soporte dedicado"],
+      },
+    ],
+    requirements: [
+      "RNC de la empresa",
+      "Lista de vehículos con matrículas",
+      "Persona de contacto autorizada",
+      "Contrato mínimo de 12 meses",
+      "Acceso a los vehículos para instalación",
+    ],
   },
   "rent-car": {
     icon: KeyRound,
     title: "GPS para Rent Car",
     subtitle: "Seguridad y control total para tu negocio de alquiler",
     description:
-      "Protege tu inversión en vehículos de alquiler con nuestro sistema GPS especializado para Rent Car. Monitorea cada vehículo en tiempo real, establece límites geográficos, controla el kilometraje y garantiza la seguridad de tu flota. Reduce pérdidas y mejora la gestión de tu negocio de renta de vehículos.",
+      "Protege tu inversión en vehículos de alquiler con nuestro sistema GPS especializado para Rent Car. Monitorea cada vehículo en tiempo real, establece límites geográficos, controla el kilometraje y garantiza la seguridad de tu flota.",
     features: [
       "Control de kilometraje y uso del vehículo",
       "Geocercas para delimitar zonas permitidas",
@@ -77,13 +122,34 @@ const servicesData: Record<string, {
       "Mayor control sobre contratos y devoluciones",
       "Recuperación rápida en caso de robo",
     ],
+    pricing: [
+      {
+        plan: "Estándar",
+        price: "RD$1,000",
+        period: "/vehículo/mes",
+        includes: ["Rastreo en tiempo real", "Geocercas", "Alertas de velocidad", "Reportes por vehículo"],
+      },
+      {
+        plan: "Profesional",
+        price: "RD$1,800",
+        period: "/vehículo/mes",
+        includes: ["Todo lo del plan Estándar", "Bloqueo remoto", "Reportes por cliente", "Control de kilometraje", "Integración con software", "Soporte prioritario"],
+      },
+    ],
+    requirements: [
+      "RNC del negocio de Rent Car",
+      "Documentación de los vehículos",
+      "Seguro vigente de la flota",
+      "Contrato mínimo de 12 meses",
+      "Acceso a los vehículos para instalación",
+    ],
   },
   financieras: {
     icon: Landmark,
     title: "GPS para Financieras",
     subtitle: "Protege tu cartera de activos financiados",
     description:
-      "Asegura los vehículos financiados con nuestro sistema de rastreo GPS diseñado para instituciones financieras. Monitorea la ubicación de cada activo, recibe alertas de comportamiento inusual y facilita la recuperación en caso de incumplimiento. Una herramienta indispensable para proteger tu cartera de préstamos vehiculares.",
+      "Asegura los vehículos financiados con nuestro sistema de rastreo GPS diseñado para instituciones financieras. Monitorea la ubicación de cada activo, recibe alertas de comportamiento inusual y facilita la recuperación en caso de incumplimiento.",
     features: [
       "Monitoreo 24/7 de activos financiados",
       "Alertas de salida de zona geográfica autorizada",
@@ -97,6 +163,27 @@ const servicesData: Record<string, {
       "Recuperación más rápida en caso de mora",
       "Mayor confianza en la aprobación de créditos",
       "Reportes automatizados para auditoría",
+    ],
+    pricing: [
+      {
+        plan: "Básico Financiero",
+        price: "RD$800",
+        period: "/vehículo/mes",
+        includes: ["Monitoreo 24/7", "Alertas de geocerca", "Reportes programados", "Panel de cobranza"],
+      },
+      {
+        plan: "Premium Financiero",
+        price: "RD$1,500",
+        period: "/vehículo/mes",
+        includes: ["Todo lo del plan Básico", "Inmovilización remota", "API de integración", "Reportes de auditoría", "Soporte dedicado", "SLA garantizado"],
+      },
+    ],
+    requirements: [
+      "RNC de la entidad financiera",
+      "Documentación del vehículo financiado",
+      "Autorización del deudor para instalación",
+      "Contrato de servicio mínimo de 12 meses",
+      "Persona de contacto para el equipo de cobranza",
     ],
   },
 };
@@ -213,6 +300,93 @@ const ServiceDetail = () => {
               </ul>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="inline-flex items-center gap-2 mb-4">
+              <DollarSign size={24} className="text-primary" />
+              <h2 className="font-display text-2xl sm:text-3xl font-bold">Planes y precios</h2>
+            </div>
+            <p className="text-muted-foreground max-w-lg mx-auto">
+              Elige el plan que mejor se adapte a tus necesidades. Todos incluyen instalación profesional.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            {service.pricing.map((p, i) => (
+              <motion.div
+                key={p.plan}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className={`glass rounded-xl p-6 flex flex-col ${i === 1 ? "border-primary/50 ring-1 ring-primary/20" : ""}`}
+              >
+                <h3 className="font-display font-semibold text-lg mb-2">{p.plan}</h3>
+                <div className="mb-4">
+                  <span className="text-3xl font-bold text-foreground">{p.price}</span>
+                  <span className="text-sm text-muted-foreground">{p.period}</span>
+                </div>
+                <ul className="space-y-3 mb-6 flex-1">
+                  {p.includes.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm">
+                      <CheckCircle2 size={16} className="text-primary mt-0.5 shrink-0" />
+                      <span className="text-muted-foreground">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center justify-center py-3 rounded-lg font-semibold text-sm transition-colors ${
+                    i === 1
+                      ? "bg-primary text-primary-foreground hover:opacity-90"
+                      : "border border-border hover:border-primary/50 text-foreground"
+                  }`}
+                >
+                  Solicitar plan
+                </a>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Requirements */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl"
+          >
+            <div className="inline-flex items-center gap-2 mb-6">
+              <ClipboardList size={24} className="text-primary" />
+              <h2 className="font-display text-2xl font-bold">Requisitos</h2>
+            </div>
+            <p className="text-muted-foreground mb-6">
+              Para contratar este servicio necesitas presentar los siguientes documentos:
+            </p>
+            <ul className="space-y-4">
+              {service.requirements.map((r) => (
+                <li key={r} className="flex items-start gap-3">
+                  <CheckCircle2 size={20} className="text-primary mt-0.5 shrink-0" />
+                  <span className="text-muted-foreground">{r}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
       </section>
 
