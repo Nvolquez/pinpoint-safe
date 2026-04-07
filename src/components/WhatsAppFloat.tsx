@@ -1,6 +1,6 @@
 import { MessageCircle } from "lucide-react";
 
-const WHATSAPP_URL = "https://wa.me/18091234567?text=Hola%2C%20quiero%20información%20sobre%20rastreo%20GPS";
+const WHATSAPP_URL = "https://wa.me/18097869806?text=Hola%2C%20quiero%20información%20sobre%20rastreo%20GPS";
 
 const WhatsAppFloat = () => (
   <a

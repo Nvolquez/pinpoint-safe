@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 
-const WHATSAPP_URL = "https://wa.me/18091234567?text=Hola%2C%20quiero%20solicitar%20el%20servicio%20de%20GPS";
+const WHATSAPP_URL = "https://wa.me/18097869806?text=Hola%2C%20quiero%20solicitar%20el%20servicio%20de%20GPS";
 
 const servicesData: Record<string, {
   icon: typeof Car;

@@ -38,9 +38,9 @@ const Footer = () => (
         <div>
           <h4 className="font-display font-semibold mb-4">Contacto</h4>
           <div className="space-y-3 text-sm text-muted-foreground">
-            <a href="https://wa.me/18091234567" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground transition-colors">
+            <a href="https://wa.me/18097869806" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground transition-colors">
               <MessageCircle size={16} className="text-green-500" />
-              +1 (809) 123-4567
+              +1 (809) 786-9806
             </a>
             <a href="mailto:info@setragps.com" className="flex items-center gap-2 hover:text-foreground transition-colors">
               <Mail size={16} className="text-primary" />

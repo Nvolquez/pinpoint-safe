@@ -34,7 +34,7 @@ const CTASection = () => (
             WhatsApp
           </a>
           <a
-            href="tel:+18091234567"
+            href="tel:+18097869806"
             className="inline-flex items-center justify-center gap-2 border border-border hover:border-primary/50 text-foreground font-semibold px-10 py-4 rounded-lg transition-colors text-lg w-full sm:w-auto"
           >
             <Phone size={22} />
