@@ -33,9 +33,8 @@ const Brands = () => (
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
         {brands.map((c, i) => (
-          <motion.a
+          <motion.div
             key={c.name}
-            href={c.url}
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0, scale: 0.9 }}
