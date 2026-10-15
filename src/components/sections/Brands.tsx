@@ -33,11 +33,8 @@ const Brands = () => (
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
         {brands.map((c, i) => (
-          <motion.a
+          <motion.div
             key={c.name}
-            href={c.url}
-            target="_blank"
-            rel="noopener noreferrer"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -52,7 +49,7 @@ const Brands = () => (
             <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors text-center">
               {c.name}
             </span>
-          </motion.a>
+          </motion.div>
         ))}
       </div>
     </div>
