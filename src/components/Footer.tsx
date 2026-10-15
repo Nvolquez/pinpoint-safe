@@ -1,11 +1,8 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, X } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import logo from "@/assets/logo.svg";
-import { termsSections, termsLastUpdated } from "@/data/termsContent";
 
 const Footer = () => {
-  const [showTerms, setShowTerms] = useState(false);
   const socials = [
     { name: "WhatsApp", url: "https://wa.me/18097869806", icon: "wa" },
     { name: "Facebook", url: "https://facebook.com/setragps", icon: "fb" },
@@ -96,11 +93,14 @@ const Footer = () => {
           </div>
         </div>
 
-        <TermsModal open={showTerms} onClose={() => setShowTerms(false)} />
-
         <div className="border-t border-border mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
           <span>© {new Date().getFullYear()} Setra GPS. Todos los derechos reservados.</span>
-          <button onClick={() => setShowTerms(true)} className="hover:text-primary transition-colors">Términos y Condiciones</button>
+          <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1" aria-label="Información legal">
+            <Link to="/terminos" className="hover:text-primary transition-colors">Términos y Condiciones</Link>
+            <Link to="/privacidad" className="hover:text-primary transition-colors">Privacidad</Link>
+            <Link to="/licencia" className="hover:text-primary transition-colors">Licencia</Link>
+            <Link to="/app" className="hover:text-primary transition-colors">App móvil</Link>
+          </nav>
         </div>
       </div>
     </footer>
@@ -132,40 +132,6 @@ const SocialIcon = ({ type }: { type: string }) => {
     <svg viewBox="0 0 24 24" fill="currentColor" className={cls}>
       <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
     </svg>
-  );
-};
-
-const TermsModal = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
-  if (!open) return null;
-  return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
-      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
-      <div
-        className="relative bg-card border border-border rounded-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 md:p-8 shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button onClick={onClose} className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors">
-          <X size={20} />
-        </button>
-        <h2 className="font-heading text-2xl font-bold text-foreground mb-6">Términos y Condiciones</h2>
-        <div className="space-y-6 text-sm text-muted-foreground leading-relaxed">
-          {termsSections.map((section) => (
-            <section key={section.title}>
-              <h3 className="font-heading text-base font-semibold text-foreground mb-2">{section.title}</h3>
-              {section.content && <p>{section.content}</p>}
-              {section.list && (
-                <ul className="list-disc list-inside space-y-1 ml-2 mt-1">
-                  {section.list.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              )}
-            </section>
-          ))}
-          <p className="text-xs text-muted-foreground/60 pt-4 border-t border-border">Última actualización: {termsLastUpdated}</p>
-        </div>
-      </div>
-    </div>
   );
 };
 

@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,7 +9,10 @@ import { ThemeProvider } from "@/hooks/use-theme";
 // Importaciones de tus páginas
 import Index from "./pages/Index.tsx";
 import ServicePage from "./pages/ServicePage.tsx";
-import TermsPage from "./pages/TermsPage.tsx";
+import AppInfo from "./pages/AppInfo.tsx";
+import Privacidad from "./pages/Privacidad.tsx";
+import Licencia from "./pages/Licencia.tsx";
+import TerminosServicio from "./pages/TerminosServicio.tsx";
 import Santiago from "./pages/Santiago.tsx";
 import LaRomana from "./pages/LaRomana.tsx";
 import SantoDomingo from "./pages/SantoDomingo.tsx";
@@ -65,8 +68,13 @@ const App = () => (
               <Route path="/gps-rent-car" element={<ServicePage />} />
               <Route path="/gps-financieras" element={<ServicePage />} />
 
-              {/* Páginas Legales */}
-              <Route path="/terminos-y-condiciones" element={<TermsPage />} />
+              {/* Páginas Legales y de la app móvil (URLs que se declaran en Google Play) */}
+              <Route path="/app" element={<AppInfo />} />
+              <Route path="/privacidad" element={<Privacidad />} />
+              <Route path="/licencia" element={<Licencia />} />
+              <Route path="/terminos" element={<TerminosServicio />} />
+              {/* La URL anterior redirige a la nueva */}
+              <Route path="/terminos-y-condiciones" element={<Navigate to="/terminos" replace />} />
 
               {/* Manejo de error 404 */}
               <Route path="*" element={<NotFound />} />
