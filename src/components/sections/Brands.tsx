@@ -49,7 +49,7 @@ const Brands = () => (
             <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors text-center">
               {c.name}
             </span>
-          </motion.a>
+          </motion.div>
         ))}
       </div>
     </div>
